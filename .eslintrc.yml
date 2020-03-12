@@ -1,7 +1,7 @@
 ---
 
 extends:
-- 'airbnb/base'
+- 'airbnb-base'
 env:
   node: true
   browser: true
