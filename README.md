@@ -5,4 +5,4 @@
 
 [![Build Status](https://travis-ci.com/morphydidius/frontend-project-lvl1.svg?branch=master)](https://travis-ci.com/morphydidius/frontend-project-lvl1)
 
-![](https://github.com/actions/morphydidius/workflows/.github/workflows/main.yml/badge.svg)
+![](https://github.com/morphydidius/frontend-project-lvl1/workflows/checkCode/badge.svg)
