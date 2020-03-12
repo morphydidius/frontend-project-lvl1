@@ -14,10 +14,6 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: linter check
-      run: make lint
-  
-  simpleTest:
-    runs-on: ubuntu-latest
-    steps:
-    - name: simple testing
-      run: echo "Simple test!"
+      run: |
+        make install
+        make lint
