@@ -1,9 +1,5 @@
-import readlineSync from 'readline-sync';
-
-export const getName = () => {
-  const actualName = readlineSync.question('May I have your name? ');
-  return actualName;
-};
+import calc from './games/calc.js';
+import { greetPerson, congratulate } from './tech_funcs.js';
 
 export const classNumber = () => {
   let result = false;
@@ -24,4 +20,33 @@ export const classNumber = () => {
     console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${getRightAnswer(randomNumber)}".`);
   }
   return result;
+};
+
+const initGame = (game) => (attempt = 0) => {
+  const maxTry = 3;
+  let result = false;
+  let gameFunc;
+  switch (game) {
+    case ('calc'):
+      gameFunc = calc;
+      break;
+    default:
+      gameFunc = calc;
+  }
+  result = gameFunc();
+  if (!result) {
+    return result;
+  }
+  if (attempt + 1 < maxTry) {
+    return initGame(game)(attempt + 1);
+  }
+  return true;
+};
+
+export const playGame = (gameName) => () => {
+  const name = greetPerson();
+  const result = initGame(gameName)();
+  if (result) {
+    congratulate(name);
+  }
 };
