@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { greetPerson } from '../src/index.js';
+import playGame from '../src/index.js';
 
-greetPerson();
+playGame('games')();

@@ -1,26 +1,6 @@
 import calc from './games/calc.js';
-import { greetPerson, congratulate } from './tech_funcs.js';
-
-export const classNumber = () => {
-  let result = false;
-  const randomNumber = Math.floor(Math.random() * 100);
-  const getRightAnswer = (n) => {
-    const mod = n % 2;
-    if (mod === 0) {
-      return 'yes';
-    }
-    return 'no';
-  };
-  console.log('Question: ', randomNumber);
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (userAnswer === getRightAnswer(randomNumber)) {
-    console.log('Correct!');
-    result = true;
-  } else {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${getRightAnswer(randomNumber)}".`);
-  }
-  return result;
-};
+import even from './games/even.js';
+import { greetPerson, congratulate, playAgain } from './tech_funcs.js';
 
 const initGame = (game) => (attempt = 0) => {
   const maxTry = 3;
@@ -29,6 +9,9 @@ const initGame = (game) => (attempt = 0) => {
   switch (game) {
     case ('calc'):
       gameFunc = calc;
+      break;
+    case ('even'):
+      gameFunc = even;
       break;
     default:
       gameFunc = calc;
@@ -43,10 +26,13 @@ const initGame = (game) => (attempt = 0) => {
   return true;
 };
 
-export const playGame = (gameName) => () => {
-  const name = greetPerson();
+export default (gameName) => () => {
+  const userName = greetPerson();
+  if (gameName === 'games') { return; }
   const result = initGame(gameName)();
   if (result) {
-    congratulate(name);
+    congratulate(userName);
+  } else {
+    playAgain(userName);
   }
 };

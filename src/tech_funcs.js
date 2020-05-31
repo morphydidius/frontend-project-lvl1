@@ -9,6 +9,10 @@ export const congratulate = (name) => {
   console.log(`Congratulations, ${name}!`);
 };
 
+export const playAgain = (name) => {
+  console.log(`Let's try again, ${name}!`);
+};
+
 export const greetPerson = () => {
   console.log('Welcome to the Brain Games!');
   const name = getName();
@@ -41,5 +45,3 @@ export const operationToSymbol = (str) => {
       return '+';
   }
 };
-
-// использовать eval
