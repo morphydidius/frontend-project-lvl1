@@ -6,6 +6,8 @@ even:
 	npx node bin/brain-even.js
 calc:
 	npx node bin/brain-calc.js
+gkd:
+	npx node bin/brain-gkd.js
 publish:
 	npm publish --dry-run
 lint:
