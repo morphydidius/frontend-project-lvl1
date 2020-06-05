@@ -8,6 +8,8 @@ calc:
 	npx node bin/brain-calc.js
 gkd:
 	npx node bin/brain-gkd.js
+prog:
+	npx node bin/brain-progression.js
 publish:
 	npm publish --dry-run
 lint:

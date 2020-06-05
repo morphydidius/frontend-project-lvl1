@@ -12,3 +12,6 @@
 
 # play gkd:
 [![asciicast](https://asciinema.org/a/O9KI5intCdySHN1PcgNRbTqD7.svg)](https://asciinema.org/a/O9KI5intCdySHN1PcgNRbTqD7)
+
+# play prog:
+[![asciicast](https://asciinema.org/a/u0XlWE02sFbaPgtJcfO4ggvr5.svg)](https://asciinema.org/a/u0XlWE02sFbaPgtJcfO4ggvr5)

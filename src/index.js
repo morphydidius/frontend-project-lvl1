@@ -1,6 +1,7 @@
 import calc from './games/calc.js';
 import even from './games/even.js';
 import gkd from './games/gkd.js';
+import prog from './games/progr.js';
 import { greetPerson, congratulate, playAgain } from './tech_funcs.js';
 
 const initGame = (game) => (attempt = 0) => {
@@ -16,6 +17,9 @@ const initGame = (game) => (attempt = 0) => {
       break;
     case ('gkd'):
       gameFunc = gkd;
+      break;
+    case ('prog'):
+      gameFunc = prog;
       break;
     default:
       gameFunc = calc;
