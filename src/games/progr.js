@@ -20,7 +20,11 @@ const getRandomLimitTop = () => Math.floor(Math.random() * 10);
 const progArrayModified = (arr, elNumber) => {
   const arrMod = [];
   arr.forEach((el, ind) => {
-    return ind === elNumber ? arrMod.push('..') : arrMod.push(el);
+    if (ind === elNumber) {
+      arrMod.push('..');
+    } else {
+      arrMod.push(el);
+    }
   });
   let arrStr = '';
   arrMod.forEach((el, i) => {
