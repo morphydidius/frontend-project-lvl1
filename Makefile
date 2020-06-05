@@ -10,6 +10,8 @@ gkd:
 	npx node bin/brain-gkd.js
 prog:
 	npx node bin/brain-progression.js
+prime:
+	npx node bin/brain-prime.js
 publish:
 	npm publish --dry-run
 lint:

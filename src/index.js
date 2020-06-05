@@ -2,6 +2,7 @@ import calc from './games/calc.js';
 import even from './games/even.js';
 import gkd from './games/gkd.js';
 import prog from './games/progr.js';
+import prime from './games/prime.js';
 import { greetPerson, congratulate, playAgain } from './tech_funcs.js';
 
 const initGame = (game) => (attempt = 0) => {
@@ -20,6 +21,9 @@ const initGame = (game) => (attempt = 0) => {
       break;
     case ('prog'):
       gameFunc = prog;
+      break;
+    case ('prime'):
+      gameFunc = prime;
       break;
     default:
       gameFunc = calc;

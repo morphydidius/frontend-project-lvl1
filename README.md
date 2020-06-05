@@ -15,3 +15,6 @@
 
 # play prog:
 [![asciicast](https://asciinema.org/a/u0XlWE02sFbaPgtJcfO4ggvr5.svg)](https://asciinema.org/a/u0XlWE02sFbaPgtJcfO4ggvr5)
+
+# play prime:
+[![asciicast](https://asciinema.org/a/jGSjYIpmElWywuKOVXJDVWbjk.svg)](https://asciinema.org/a/jGSjYIpmElWywuKOVXJDVWbjk)
