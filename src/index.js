@@ -28,7 +28,7 @@ const initGame = (game) => (attempt = 0) => {
     default:
       gameFunc = calc;
   }
-  result = gameFunc();
+  result = gameFunc(attempt);
   if (!result) {
     return result;
   }

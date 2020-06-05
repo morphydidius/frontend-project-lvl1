@@ -1,24 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomNumber } from '../tech_funcs.js';
-
-const getDivArray = (num) => {
-  const arr = [1];
-  if (!num) {
-    return arr;
-  }
-  const checkArrElem = (numer, del) => {
-    if (numer === 1) {
-      return arr;
-    }
-    const mod = numer % del;
-    if (!mod) {
-      arr.push(del);
-      return checkArrElem(numer / del, del);
-    }
-    return checkArrElem(numer, del + 1);
-  };
-  return checkArrElem(num, 2);
-};
+import { getRandomNumber, getDivArray } from '../tech_funcs.js';
 
 const getCommonDiv = (arr, numerToCheck) => {
   let nod = 1;
@@ -36,12 +17,14 @@ const getCommonDiv = (arr, numerToCheck) => {
   return nod;
 };
 
-export default () => {
+export default (attempt) => {
   const randomA = getRandomNumber();
   const randomB = getRandomNumber();
   const a = Math.min(randomA, randomB);
   const b = Math.max(randomA, randomB);
-  console.log('Find the greatest common divisor of given numbers.');
+  if (!attempt) {
+    console.log('Find the greatest common divisor of given numbers.');
+  }
   console.log(`Question: ${a} ${b}`);
   const arrA = getDivArray(a);
   const rightAnswer = getCommonDiv(arrA, b);

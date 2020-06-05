@@ -14,12 +14,14 @@ export const calcFunc = (nameFunc) => (x, y) => {
   }
 };
 
-export default () => {
+export default (attempt) => {
   const a = getRandomNumber();
   const b = getRandomNumber();
   const oper = randomOperation();
   const operString = operationToSymbol(`${oper}`);
-  console.log('What is the result of the expression?');
+  if (!attempt) {
+    console.log('What is the result of the expression?');
+  }
   console.log(`Question: ${a} ${operString} ${b}`);
   const userAnswer = readlineSync.question('Your answer: ');
   const rightAnswer = calcFunc(`${oper}`)(a, b);

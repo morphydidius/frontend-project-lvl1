@@ -1,9 +1,11 @@
 import readlineSync from 'readline-sync';
 import { getRandomNumber, getDivArray } from '../tech_funcs.js';
 
-export default () => {
+export default (attempt) => {
   const num = getRandomNumber();
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no"');
+  if (!attempt) {
+    console.log('Answer "yes" if given number is prime. Otherwise answer "no"');
+  }
   console.log(`Question: ${num}`);
   const divArr = getDivArray(num);
   const rightAnswer = divArr.length > 2 ? 'no' : 'yes';

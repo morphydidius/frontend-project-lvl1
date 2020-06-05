@@ -9,10 +9,12 @@ const getRightAnswer = (n) => {
   return 'no';
 };
 
-export default () => {
+export default (attempt) => {
   let result = false;
   const randomNumber = getRandomNumber();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  if (!attempt) {
+    console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  }
   console.log('Question: ', randomNumber);
   const userAnswer = readlineSync.question('Your answer: ');
   if (userAnswer === getRightAnswer(randomNumber)) {

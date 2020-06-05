@@ -33,11 +33,13 @@ const progArrayModified = (arr, elNumber) => {
   return arrStr;
 };
 
-export default () => {
+export default (attempt) => {
   const arr = getProgArray();
   const randomNum = getRandomLimitTop();
   const arrMod = progArrayModified(arr, randomNum);
-  console.log('What number is missing in the progression?');
+  if (!attempt) {
+    console.log('What number is missing in the progression?');
+  }
   console.log(`Question: ${arrMod}`);
   const userAnswer = readlineSync.question('Your answer: ');
   if (userAnswer === arr[randomNum].toString()) {

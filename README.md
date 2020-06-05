@@ -1,20 +1,20 @@
 
 <a href="https://codeclimate.com/github/morphydidius/frontend-project-lvl1/maintainability"><img src="https://api.codeclimate.com/v1/badges/6fa847220be557783e6f/maintainability" /></a> [![GithubActionWorkflow](https://github.com/morphydidius/frontend-project-lvl1/workflows/Make-lint/badge.svg)](https://github.com/morphydidius/frontend-project-lvl1/actions)
 
-# play games:
-[![asciicast](https://asciinema.org/a/mZF7AQXErYjaUdVyGlT1D4LYE.svg)](https://asciinema.org/a/mZF7AQXErYjaUdVyGlT1D4LYE)
+# Игра "Приветствие": make start
+[![asciicast](https://asciinema.org/a/gHlJVcwfLc2A0ihVKlWRV4khQ.svg)](https://asciinema.org/a/gHlJVcwfLc2A0ihVKlWRV4khQ)
 
-# play even:
-[![asciicast](https://asciinema.org/a/6bUdUCknFaUK4Dr3xHH5Cj74m.svg)](https://asciinema.org/a/6bUdUCknFaUK4Dr3xHH5Cj74m)
+# Игра "Проверка на чётность": make even
+[![asciicast](https://asciinema.org/a/rCbpazDpP10v6Xx6lVvCmqufi.svg)](https://asciinema.org/a/rCbpazDpP10v6Xx6lVvCmqufi)
 
-# play calc:
-[![asciicast](https://asciinema.org/a/1OQqg4ZQ3yuWfJXLxIswhA3dh.svg)](https://asciinema.org/a/1OQqg4ZQ3yuWfJXLxIswhA3dh)
+# Игра "Калькулятор": make calc
+[![asciicast](https://asciinema.org/a/53dSmd7jVaQ1oxcnMtUSO5tiI.svg)](https://asciinema.org/a/53dSmd7jVaQ1oxcnMtUSO5tiI)
 
-# play gkd:
-[![asciicast](https://asciinema.org/a/O9KI5intCdySHN1PcgNRbTqD7.svg)](https://asciinema.org/a/O9KI5intCdySHN1PcgNRbTqD7)
+# Игра "Наименьший общий делитель": make gkd
+[![asciicast](https://asciinema.org/a/ahVfNkzGRyxMn4aIXm5hX9Zgm.svg)](https://asciinema.org/a/ahVfNkzGRyxMn4aIXm5hX9Zgm)
 
-# play prog:
-[![asciicast](https://asciinema.org/a/u0XlWE02sFbaPgtJcfO4ggvr5.svg)](https://asciinema.org/a/u0XlWE02sFbaPgtJcfO4ggvr5)
+# Игра "Арифметическая прогрессия": make prog
+[![asciicast](https://asciinema.org/a/q8YfzfyRWHk0nj3YONRjSDVmf.svg)](https://asciinema.org/a/q8YfzfyRWHk0nj3YONRjSDVmf)
 
-# play prime:
-[![asciicast](https://asciinema.org/a/jGSjYIpmElWywuKOVXJDVWbjk.svg)](https://asciinema.org/a/jGSjYIpmElWywuKOVXJDVWbjk)
+# Игра "Простое ли число?": make prime
+[![asciicast](https://asciinema.org/a/aeRr05NA4uBwAYdAgIZfPSDPD.svg)](https://asciinema.org/a/aeRr05NA4uBwAYdAgIZfPSDPD)
