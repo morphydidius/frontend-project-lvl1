@@ -1,19 +1,29 @@
-import readlineSync from 'readline-sync';
+import pairs from '@hexlet/pairs';
 import { getRandomNumber, getDivArray } from '../tech_funcs.js';
+import play from '../cli.js';
 
-export default (attempt) => {
-  const num = getRandomNumber();
-  if (!attempt) {
-    console.log('Answer "yes" if given number is prime. Otherwise answer "no"');
+const getRightAnswer = (n) => {
+  const divArr = getDivArray(n);
+  const answer = divArr.length > 2 ? 'no' : 'yes';
+  return answer;
+};
+
+const formTaskArray = () => {
+  const arr = [];
+  for (let round = 0; round < 3; round += 1) {
+    const num = getRandomNumber();
+    const taskPair = pairs.cons(num.toString(), getRightAnswer(num));
+    arr.push(taskPair);
   }
-  console.log(`Question: ${num}`);
-  const divArr = getDivArray(num);
-  const rightAnswer = divArr.length > 2 ? 'no' : 'yes';
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (userAnswer === rightAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`'${userAnswer}' is wrong answer ;( Correct answer is '${rightAnswer}'.`);
-  return false;
+  return arr;
+};
+
+const instruct = 'Answer "yes" if the number is prime, otherwise answer "no".';
+
+const task = formTaskArray();
+
+const dataToPlay = pairs.cons(instruct, task);
+
+export default () => {
+  play(dataToPlay);
 };

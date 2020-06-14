@@ -1,5 +1,6 @@
-import readlineSync from 'readline-sync';
+import pairs from '@hexlet/pairs';
 import { getRandomNumber } from '../tech_funcs.js';
+import play from '../cli.js';
 
 const getRightAnswer = (n) => {
   const mod = n % 2;
@@ -9,19 +10,22 @@ const getRightAnswer = (n) => {
   return 'no';
 };
 
-export default (attempt) => {
-  let result = false;
-  const randomNumber = getRandomNumber();
-  if (!attempt) {
-    console.log('Answer "yes" if the number is even, otherwise answer "no".');
+const formTaskArray = () => {
+  const arr = [];
+  for (let round = 0; round < 3; round += 1) {
+    const num = getRandomNumber();
+    const taskPair = pairs.cons(num.toString(), getRightAnswer(num));
+    arr.push(taskPair);
   }
-  console.log('Question: ', randomNumber);
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (userAnswer === getRightAnswer(randomNumber)) {
-    console.log('Correct!');
-    result = true;
-  } else {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${getRightAnswer(randomNumber)}".`);
-  }
-  return result;
+  return arr;
+};
+
+const instruct = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const task = formTaskArray();
+
+const dataToPlay = pairs.cons(instruct, task);
+
+export default () => {
+  play(dataToPlay);
 };

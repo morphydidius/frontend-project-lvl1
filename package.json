@@ -2,7 +2,7 @@
   "name": "mdidius-package",
   "version": "0.0.1",
   "description": "<a href=\"https://codeclimate.com/github/morphydidius/frontend-project-lvl1/maintainability\"><img src=\"https://api.codeclimate.com/v1/badges/6fa847220be557783e6f/maintainability\" /></a>\r <a href=\"https://codeclimate.com/github/codeclimate/codeclimate/test_coverage\"><img src=\"https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage\" /></a>",
-  "main": "src/index.js",
+  "main": "src/cli.js",
   "type": "module",
   "bin": {
     "brain-games": "bin/brain-games.js",

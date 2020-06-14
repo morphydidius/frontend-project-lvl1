@@ -1,5 +1,6 @@
-import readlineSync from 'readline-sync';
+import pairs from '@hexlet/pairs';
 import { getRandomNumber } from '../tech_funcs.js';
+import play from '../cli.js';
 
 const getProgArray = () => {
   const firstElem = getRandomNumber();
@@ -33,19 +34,24 @@ const progArrayModified = (arr, elNumber) => {
   return arrStr;
 };
 
-export default (attempt) => {
-  const arr = getProgArray();
-  const randomNum = getRandomLimitTop();
-  const arrMod = progArrayModified(arr, randomNum);
-  if (!attempt) {
-    console.log('What number is missing in the progression?');
+const formTaskArray = () => {
+  const arr = [];
+  for (let round = 0; round < 3; round += 1) {
+    const arrProgrNumer = getProgArray();
+    const randomNum = getRandomLimitTop();
+    const arrProgrString = progArrayModified(arrProgrNumer, randomNum);
+    const taskPair = pairs.cons(`${arrProgrString}`, arrProgrNumer[randomNum].toString());
+    arr.push(taskPair);
   }
-  console.log(`Question: ${arrMod}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (userAnswer === arr[randomNum].toString()) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`'${userAnswer}' is wrong answer ;( Correct answer is '${arr[randomNum]}'.`);
-  return false;
+  return arr;
+};
+
+const instruct = 'What number is missing in the progression?';
+
+const task = formTaskArray();
+
+const dataToPlay = pairs.cons(instruct, task);
+
+export default () => {
+  play(dataToPlay);
 };

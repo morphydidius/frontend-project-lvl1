@@ -1,5 +1,28 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber, randomOperation, operationToSymbol } from '../tech_funcs.js';
+import pairs from '@hexlet/pairs';
+import { getRandomNumber } from '../tech_funcs.js';
+import play from '../cli.js';
+
+export const randomOperation = () => {
+  const randomNum = getRandomNumber();
+  if (randomNum < 30) {
+    return 'add';
+  }
+  if (randomNum < 60) {
+    return 'sub';
+  }
+  return 'mult';
+};
+
+export const operationToSymbol = (str) => {
+  switch (str) {
+    case 'sub':
+      return '-';
+    case 'mult':
+      return '*';
+    default:
+      return '+';
+  }
+};
 
 export const calcFunc = (nameFunc) => (x, y) => {
   switch (nameFunc) {
@@ -14,21 +37,26 @@ export const calcFunc = (nameFunc) => (x, y) => {
   }
 };
 
-export default (attempt) => {
-  const a = getRandomNumber();
-  const b = getRandomNumber();
-  const oper = randomOperation();
-  const operString = operationToSymbol(`${oper}`);
-  if (!attempt) {
-    console.log('What is the result of the expression?');
+const formTaskArray = () => {
+  const arr = [];
+  for (let round = 0; round < 3; round += 1) {
+    const a = getRandomNumber();
+    const b = getRandomNumber();
+    const oper = randomOperation();
+    const operString = operationToSymbol(`${oper}`);
+    const rightAnswer = calcFunc(`${oper}`)(a, b);
+    const taskPair = pairs.cons(`${a} ${operString} ${b}`, rightAnswer.toString());
+    arr.push(taskPair);
   }
-  console.log(`Question: ${a} ${operString} ${b}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  const rightAnswer = calcFunc(`${oper}`)(a, b);
-  if (userAnswer === rightAnswer.toString()) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`'${userAnswer}' is wrong answer ;( Correct answer is '${rightAnswer}'.`);
-  return false;
+  return arr;
+};
+
+const instruct = 'What is the result of the expression?';
+
+const task = formTaskArray();
+
+const dataToPlay = pairs.cons(instruct, task);
+
+export default () => {
+  play(dataToPlay);
 };
