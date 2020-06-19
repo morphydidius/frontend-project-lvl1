@@ -1,5 +1,5 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, roundsNumber } from '../tech.js';
+import { getRandomNumber, formTask } from '../tech.js';
 import play from '../cli.js';
 
 const createProgression = (firstElem, incr) => {
@@ -31,24 +31,18 @@ const createProgrWithHiddenElem = (arr, elNumber) => {
   return arrStr;
 };
 
-const formTask = () => {
-  const arr = [];
-  for (let round = 0; round < roundsNumber; round += 1) {
-    const firstElem = getRandomNumber(1, 100);
-    const incr = getRandomNumber(1, 50);
-    const progression = createProgression(firstElem, incr);
-    const randomProgElemIndex = getRandomNumber(0, 9);
-    const progrWithHiddenElem = createProgrWithHiddenElem(progression, randomProgElemIndex);
-    const taskElem = pairs.cons(`${progrWithHiddenElem}`, progression[randomProgElemIndex].toString());
-    arr.push(taskElem);
-  }
-  return arr;
+const formTaskElem = () => {
+  const firstElem = getRandomNumber(1, 100);
+  const incr = getRandomNumber(1, 50);
+  const progression = createProgression(firstElem, incr);
+  const randomProgElemIndex = getRandomNumber(0, 9);
+  const progrWithHiddenElem = createProgrWithHiddenElem(progression, randomProgElemIndex);
+  const taskElem = pairs.cons(`${progrWithHiddenElem}`, progression[randomProgElemIndex].toString());
+  return taskElem;
 };
 
 const instruct = 'What number is missing in the progression?';
 
-const task = formTask();
-
 export default () => {
-  play(instruct, task);
+  play(instruct, formTask(formTaskElem));
 };

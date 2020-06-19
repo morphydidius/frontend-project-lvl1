@@ -1,5 +1,5 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, roundsNumber } from '../tech.js';
+import { getRandomNumber, formTask } from '../tech.js';
 import play from '../cli.js';
 
 const checkEven = (n) => n % 2 === 0;
@@ -11,20 +11,14 @@ const getRightAnswer = (n) => {
   return 'no';
 };
 
-const formTask = () => {
-  const arr = [];
-  for (let round = 0; round < roundsNumber; round += 1) {
-    const num = getRandomNumber(1, 100);
-    const taskElem = pairs.cons(num.toString(), getRightAnswer(num));
-    arr.push(taskElem);
-  }
-  return arr;
+const formTaskElem = () => {
+  const num = getRandomNumber(1, 100);
+  const taskElem = pairs.cons(num.toString(), getRightAnswer(num));
+  return taskElem;
 };
 
 const instruct = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const task = formTask();
-
 export default () => {
-  play(instruct, task);
+  play(instruct, formTask(formTaskElem));
 };

@@ -1,5 +1,5 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, roundsNumber } from '../tech.js';
+import { getRandomNumber, formTask } from '../tech.js';
 import play from '../cli.js';
 
 export const getRandomOperation = () => {
@@ -37,24 +37,18 @@ export const calcFunc = (nameFunc) => (x, y) => {
   }
 };
 
-const formTask = () => {
-  const arr = [];
-  for (let round = 0; round < roundsNumber; round += 1) {
-    const a = getRandomNumber(1, 100);
-    const b = getRandomNumber(1, 100);
-    const operation = getRandomOperation();
-    const operString = transformOperToSymbol(`${operation}`);
-    const rightAnswer = calcFunc(`${operation}`)(a, b);
-    const taskElem = pairs.cons(`${a} ${operString} ${b}`, rightAnswer.toString());
-    arr.push(taskElem);
-  }
-  return arr;
+const formTaskElem = () => {
+  const a = getRandomNumber(1, 100);
+  const b = getRandomNumber(1, 100);
+  const operation = getRandomOperation();
+  const operString = transformOperToSymbol(`${operation}`);
+  const rightAnswer = calcFunc(`${operation}`)(a, b);
+  const taskElem = pairs.cons(`${a} ${operString} ${b}`, rightAnswer.toString());
+  return taskElem;
 };
 
 const instruct = 'What is the result of the expression?';
 
-const task = formTask();
-
 export default () => {
-  play(instruct, task);
+  play(instruct, formTask(formTaskElem));
 };
