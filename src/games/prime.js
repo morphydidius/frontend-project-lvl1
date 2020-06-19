@@ -21,7 +21,7 @@ const getDivArray = (num) => {
   return checkArrElem(num, 2);
 };
 
-const getRightAnswer = (n) => {
+const getAnswer = (n) => {
   const divArr = getDivArray(n);
   const answer = divArr.length > 2 ? 'no' : 'yes';
   return answer;
@@ -31,7 +31,7 @@ const formTask = () => {
   const arr = [];
   for (let round = 0; round < roundsNumber; round += 1) {
     const num = getRandomNumber(1, 100);
-    const taskElem = pairs.cons(num.toString(), getRightAnswer(num));
+    const taskElem = pairs.cons(num.toString(), getAnswer(num));
     arr.push(taskElem);
   }
   return arr;
