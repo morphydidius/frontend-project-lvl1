@@ -1,6 +1,25 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, getDivArray } from '../tech_funcs.js';
+import { getRandomNumber, roundsNumber } from '../tech.js';
 import play from '../cli.js';
+
+const getDivArray = (num) => {
+  const arr = [1];
+  if (!num) {
+    return arr;
+  }
+  const checkArrElem = (numer, del) => {
+    if (numer === 1) {
+      return arr;
+    }
+    const mod = numer % del;
+    if (!mod) {
+      arr.push(del);
+      return checkArrElem(numer / del, del);
+    }
+    return checkArrElem(numer, del + 1);
+  };
+  return checkArrElem(num, 2);
+};
 
 const getRightAnswer = (n) => {
   const divArr = getDivArray(n);
@@ -8,22 +27,20 @@ const getRightAnswer = (n) => {
   return answer;
 };
 
-const formTaskArray = () => {
+const formTask = () => {
   const arr = [];
-  for (let round = 0; round < 3; round += 1) {
-    const num = getRandomNumber();
-    const taskPair = pairs.cons(num.toString(), getRightAnswer(num));
-    arr.push(taskPair);
+  for (let round = 0; round < roundsNumber; round += 1) {
+    const num = getRandomNumber(1, 100);
+    const taskElem = pairs.cons(num.toString(), getRightAnswer(num));
+    arr.push(taskElem);
   }
   return arr;
 };
 
 const instruct = 'Answer "yes" if the number is prime, otherwise answer "no".';
 
-const task = formTaskArray();
-
-const dataToPlay = pairs.cons(instruct, task);
+const task = formTask();
 
 export default () => {
-  play(dataToPlay);
+  play(instruct, task);
 };

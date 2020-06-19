@@ -1,9 +1,9 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber } from '../tech_funcs.js';
+import { getRandomNumber, roundsNumber } from '../tech.js';
 import play from '../cli.js';
 
-export const randomOperation = () => {
-  const randomNum = getRandomNumber();
+export const getRandomOperation = () => {
+  const randomNum = getRandomNumber(1, 100);
   if (randomNum < 30) {
     return 'add';
   }
@@ -13,7 +13,7 @@ export const randomOperation = () => {
   return 'mult';
 };
 
-export const operationToSymbol = (str) => {
+export const transformOperToSymbol = (str) => {
   switch (str) {
     case 'sub':
       return '-';
@@ -37,26 +37,24 @@ export const calcFunc = (nameFunc) => (x, y) => {
   }
 };
 
-const formTaskArray = () => {
+const formTask = () => {
   const arr = [];
-  for (let round = 0; round < 3; round += 1) {
-    const a = getRandomNumber();
-    const b = getRandomNumber();
-    const oper = randomOperation();
-    const operString = operationToSymbol(`${oper}`);
-    const rightAnswer = calcFunc(`${oper}`)(a, b);
-    const taskPair = pairs.cons(`${a} ${operString} ${b}`, rightAnswer.toString());
-    arr.push(taskPair);
+  for (let round = 0; round < roundsNumber; round += 1) {
+    const a = getRandomNumber(1, 100);
+    const b = getRandomNumber(1, 100);
+    const operation = getRandomOperation();
+    const operString = transformOperToSymbol(`${operation}`);
+    const rightAnswer = calcFunc(`${operation}`)(a, b);
+    const taskElem = pairs.cons(`${a} ${operString} ${b}`, rightAnswer.toString());
+    arr.push(taskElem);
   }
   return arr;
 };
 
 const instruct = 'What is the result of the expression?';
 
-const task = formTaskArray();
-
-const dataToPlay = pairs.cons(instruct, task);
+const task = formTask();
 
 export default () => {
-  play(dataToPlay);
+  play(instruct, task);
 };

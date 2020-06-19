@@ -1,48 +1,32 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, getDivArray } from '../tech_funcs.js';
+import { getRandomNumber, roundsNumber } from '../tech.js';
 import play from '../cli.js';
 
-const getCommonDiv = (arr, numerToCheck) => {
-  let nod = 1;
-  const func = (i, num) => {
-    if (i === arr.length) {
-      return false;
-    }
-    if (num % arr[i] === 0) {
-      nod *= arr[i];
-      return func(i + 1, num / arr[i]);
-    }
-    return func(i + 1, num);
-  };
-  func(0, numerToCheck);
-  return nod;
+const getCommonDiv = (a, b) => {
+  const numMax = Math.max(a, b);
+  const numMin = Math.min(a, b);
+  const mod = numMax % numMin;
+  if (mod === 0) {
+    return numMin;
+  }
+  return getCommonDiv(mod, numMin);
 };
 
-const getRightAnswer = (num1, num2) => {
-  const arrDiv = getDivArray(num1);
-  const rightAnswer = getCommonDiv(arrDiv, num2);
-  return rightAnswer;
-};
-
-const formTaskArray = () => {
+const formTask = () => {
   const arr = [];
-  for (let round = 0; round < 3; round += 1) {
-    const randomA = getRandomNumber();
-    const randomB = getRandomNumber();
-    const a = Math.min(randomA, randomB);
-    const b = Math.max(randomA, randomB);
-    const taskPair = pairs.cons(`${a} ${b}`, getRightAnswer(a, b).toString());
-    arr.push(taskPair);
+  for (let round = 0; round < roundsNumber; round += 1) {
+    const randomA = getRandomNumber(1, 100);
+    const randomB = getRandomNumber(1, 100);
+    const taskElem = pairs.cons(`${randomA} ${randomB}`, getCommonDiv(randomA, randomB).toString());
+    arr.push(taskElem);
   }
   return arr;
 };
 
 const instruct = 'Find the greatest common divisor of given numbers.';
 
-const task = formTaskArray();
-
-const dataToPlay = pairs.cons(instruct, task);
+const task = formTask();
 
 export default () => {
-  play(dataToPlay);
+  play(instruct, task);
 };

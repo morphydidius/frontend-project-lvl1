@@ -1,13 +1,12 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber } from '../tech_funcs.js';
+import { getRandomNumber, roundsNumber } from '../tech.js';
 import play from '../cli.js';
 
-const getProgArray = () => {
-  const firstElem = getRandomNumber();
-  const incr = getRandomNumber();
+const createProgression = (firstElem, incr) => {
   const arr = [firstElem];
+  const arrSize = 10;
   const createArr = (i = 0) => {
-    if (arr.length < 10) {
+    if (arr.length < arrSize) {
       arr.push(arr[i] + incr);
       return createArr(i + 1);
     }
@@ -16,9 +15,7 @@ const getProgArray = () => {
   return createArr();
 };
 
-const getRandomLimitTop = () => Math.floor(Math.random() * 10);
-
-const progArrayModified = (arr, elNumber) => {
+const createProgrWithHiddenElem = (arr, elNumber) => {
   const arrMod = [];
   arr.forEach((el, ind) => {
     if (ind === elNumber) {
@@ -34,24 +31,24 @@ const progArrayModified = (arr, elNumber) => {
   return arrStr;
 };
 
-const formTaskArray = () => {
+const formTask = () => {
   const arr = [];
-  for (let round = 0; round < 3; round += 1) {
-    const arrProgrNumer = getProgArray();
-    const randomNum = getRandomLimitTop();
-    const arrProgrString = progArrayModified(arrProgrNumer, randomNum);
-    const taskPair = pairs.cons(`${arrProgrString}`, arrProgrNumer[randomNum].toString());
-    arr.push(taskPair);
+  for (let round = 0; round < roundsNumber; round += 1) {
+    const firstElem = getRandomNumber(1, 100);
+    const incr = getRandomNumber(1, 50);
+    const progression = createProgression(firstElem, incr);
+    const randomProgElemIndex = getRandomNumber(0, 9);
+    const progrWithHiddenElem = createProgrWithHiddenElem(progression, randomProgElemIndex);
+    const taskElem = pairs.cons(`${progrWithHiddenElem}`, progression[randomProgElemIndex].toString());
+    arr.push(taskElem);
   }
   return arr;
 };
 
 const instruct = 'What number is missing in the progression?';
 
-const task = formTaskArray();
-
-const dataToPlay = pairs.cons(instruct, task);
+const task = formTask();
 
 export default () => {
-  play(dataToPlay);
+  play(instruct, task);
 };

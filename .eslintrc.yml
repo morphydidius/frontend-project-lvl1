@@ -4,7 +4,6 @@ extends:
 - 'airbnb-base'
 env:
   node: true
-  browser: true
 rules:
   no-console: 0
   import/extensions: 0

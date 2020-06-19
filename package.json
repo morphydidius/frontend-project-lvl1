@@ -5,7 +5,6 @@
   "main": "src/cli.js",
   "type": "module",
   "bin": {
-    "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",
     "brain-calc": "bin/brain-calc.js",
     "brain-prog": "bin/brain-progression.js",

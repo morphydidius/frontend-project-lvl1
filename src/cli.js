@@ -1,15 +1,6 @@
 import readlineSync from 'readline-sync';
 import pairs from '@hexlet/pairs';
 
-const printGreeting = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  return name;
-};
-
-const getInstruct = (pair) => pairs.car(pair);
-
 const getTask = (pair) => pairs.car(pair);
 
 const getRightAnswer = (pair) => pairs.cdr(pair);
@@ -43,23 +34,21 @@ const playRound = (pair) => {
   return false;
 };
 
-export default (pair) => {
-  // Приветствуем и узнаем имя пользователя
-  const userName = printGreeting();
-  // Заканчиваем игру, если пришли данные не в нужном
-  // формате (для игры только с приветствием)
-  if (!pairs.isPair(pair)) return;
+export default (instruct, task) => {
+  // Приветствуем
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
   // Выводим инструкцию к игре
-  console.log(getInstruct(pair));
-  // Формируем данные для игры
-  const tasks = pairs.cdr(pair);
+  console.log(instruct);
   // Запускаем игру
   let result;
+  const round = 0;
   const playGame = (counter) => {
-    result = playRound(pairs.cdr(pair)[counter]);
-    return result && counter + 1 < tasks.length ? playGame(counter + 1) : result;
+    result = playRound(task[counter]);
+    return result && counter + 1 < task.length ? playGame(counter + 1) : result;
   };
-  playGame(0);
+  playGame(round);
   // Показываем фидбэк:
   printFeedback(result, userName);
 };
