@@ -1,54 +1,38 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, formTask } from '../tech.js';
-import play from '../cli.js';
+import getRandomNumber from '../random.js';
+import play from '../flow.js';
 
-export const getRandomOperation = () => {
-  const randomNum = getRandomNumber(1, 100);
-  if (randomNum < 30) {
-    return 'add';
+const operationSymbols = ['+', '-', '*'];
+
+const calculateExpression = (num1, num2, symbol) => {
+  if (symbol === '+') {
+    return num1 + num2;
   }
-  if (randomNum < 60) {
-    return 'sub';
+  if (symbol === '-') {
+    return num1 - num2;
   }
-  return 'mult';
+  if (symbol === '*') {
+    return num1 * num2;
+  }
+  return undefined;
 };
 
-export const transformOperToSymbol = (str) => {
-  switch (str) {
-    case 'sub':
-      return '-';
-    case 'mult':
-      return '*';
-    default:
-      return '+';
-  }
+export const getRandomOperationSymbol = () => {
+  const randomNum = getRandomNumber(0, 2);
+  return operationSymbols[randomNum];
 };
 
-export const calcFunc = (nameFunc) => (x, y) => {
-  switch (nameFunc) {
-    case 'add':
-      return x + y;
-    case 'sub':
-      return x - y;
-    case 'mult':
-      return x * y;
-    default:
-      return x + y;
-  }
-};
-
-const formTaskElem = () => {
+const generateTask = () => {
   const a = getRandomNumber(1, 100);
   const b = getRandomNumber(1, 100);
-  const operation = getRandomOperation();
-  const operString = transformOperToSymbol(`${operation}`);
-  const rightAnswer = calcFunc(`${operation}`)(a, b);
-  const taskElem = pairs.cons(`${a} ${operString} ${b}`, rightAnswer.toString());
-  return taskElem;
+  const operationSymbol = getRandomOperationSymbol();
+  const rightAnswer = calculateExpression(a, b, operationSymbol);
+  const task = pairs.cons(`${a} ${operationSymbol} ${b}`, rightAnswer.toString());
+  return task;
 };
 
 const instruct = 'What is the result of the expression?';
 
 export default () => {
-  play(instruct, formTask(formTaskElem));
+  play(instruct, generateTask);
 };

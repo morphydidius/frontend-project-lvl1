@@ -1,48 +1,39 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, formTask } from '../tech.js';
-import play from '../cli.js';
+import getRandomNumber from '../random.js';
+import play from '../flow.js';
+
+// число элементов в прогресии
+const progressionSize = 10;
 
 const createProgression = (firstElem, incr) => {
-  const arr = [firstElem];
-  const arrSize = 10;
-  const createArr = (i = 0) => {
-    if (arr.length < arrSize) {
-      arr.push(arr[i] + incr);
-      return createArr(i + 1);
-    }
-    return arr;
-  };
-  return createArr();
+  const progression = [];
+  for (let index = 0; index < progressionSize; index += 1) {
+    progression.push(firstElem + incr * index);
+  }
+  return progression;
 };
 
-const createProgrWithHiddenElem = (arr, elNumber) => {
-  const arrMod = [];
-  arr.forEach((el, ind) => {
-    if (ind === elNumber) {
-      arrMod.push('..');
-    } else {
-      arrMod.push(el);
-    }
+const createProgrWithHiddenElem = (progression, hiddenIndex) => {
+  let progrWithHiddenElem = '';
+  progression.forEach((el, i) => {
+    const elem = i === hiddenIndex ? '..' : el;
+    progrWithHiddenElem += ` ${elem}`;
   });
-  let arrStr = '';
-  arrMod.forEach((el, i) => {
-    arrStr = `${arrStr} ${arrMod[i]}`;
-  });
-  return arrStr;
+  return progrWithHiddenElem;
 };
 
-const formTaskElem = () => {
+const generateTask = () => {
   const firstElem = getRandomNumber(1, 100);
   const incr = getRandomNumber(1, 50);
   const progression = createProgression(firstElem, incr);
-  const randomProgElemIndex = getRandomNumber(0, 9);
+  const randomProgElemIndex = getRandomNumber(0, progressionSize - 1);
   const progrWithHiddenElem = createProgrWithHiddenElem(progression, randomProgElemIndex);
-  const taskElem = pairs.cons(`${progrWithHiddenElem}`, progression[randomProgElemIndex].toString());
-  return taskElem;
+  const task = pairs.cons(`${progrWithHiddenElem}`, progression[randomProgElemIndex].toString());
+  return task;
 };
 
 const instruct = 'What number is missing in the progression?';
 
 export default () => {
-  play(instruct, formTask(formTaskElem));
+  play(instruct, generateTask);
 };

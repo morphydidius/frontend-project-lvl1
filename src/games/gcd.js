@@ -1,6 +1,6 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, formTask } from '../tech.js';
-import play from '../cli.js';
+import getRandomNumber from '../random.js';
+import play from '../flow.js';
 
 const getCommonDiv = (a, b) => {
   const numMax = Math.max(a, b);
@@ -12,15 +12,15 @@ const getCommonDiv = (a, b) => {
   return getCommonDiv(mod, numMin);
 };
 
-const formTaskElem = () => {
+const generateTask = () => {
   const randomA = getRandomNumber(1, 100);
   const randomB = getRandomNumber(1, 100);
-  const taskElem = pairs.cons(`${randomA} ${randomB}`, getCommonDiv(randomA, randomB).toString());
-  return taskElem;
+  const task = pairs.cons(`${randomA} ${randomB}`, getCommonDiv(randomA, randomB).toString());
+  return task;
 };
 
 const instruct = 'Find the greatest common divisor of given numbers.';
 
 export default () => {
-  play(instruct, formTask(formTaskElem));
+  play(instruct, generateTask);
 };

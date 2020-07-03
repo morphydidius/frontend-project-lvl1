@@ -1,24 +1,24 @@
 import pairs from '@hexlet/pairs';
-import { getRandomNumber, formTask } from '../tech.js';
-import play from '../cli.js';
+import getRandomNumber from '../random.js';
+import play from '../flow.js';
 
-const checkEven = (n) => n % 2 === 0;
+const isEven = (n) => n % 2 === 0;
 
 const getRightAnswer = (n) => {
-  if (checkEven(n)) {
+  if (isEven(n)) {
     return 'yes';
   }
   return 'no';
 };
 
-const formTaskElem = () => {
-  const num = getRandomNumber(1, 100);
-  const taskElem = pairs.cons(num.toString(), getRightAnswer(num));
-  return taskElem;
+const generateTask = () => {
+  const questionNumber = getRandomNumber(1, 100);
+  const task = pairs.cons(questionNumber.toString(), getRightAnswer(questionNumber));
+  return task;
 };
 
 const instruct = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 export default () => {
-  play(instruct, formTask(formTaskElem));
+  play(instruct, generateTask);
 };
