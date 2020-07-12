@@ -5,15 +5,14 @@ import play from '../flow.js';
 const isEven = (n) => n % 2 === 0;
 
 const getRightAnswer = (n) => {
-  if (isEven(n)) {
-    return 'yes';
-  }
-  return 'no';
+  const answer = isEven(n) ? 'yes' : 'no';
+  return answer;
 };
 
 const generateTask = () => {
-  const questionNumber = getRandomNumber(1, 100);
-  const task = pairs.cons(questionNumber.toString(), getRightAnswer(questionNumber));
+  const question = getRandomNumber(1, 100);
+  const rightAnswer = getRightAnswer(question);
+  const task = pairs.cons(question.toString(), rightAnswer);
   return task;
 };
 

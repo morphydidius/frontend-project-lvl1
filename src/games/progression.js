@@ -13,13 +13,13 @@ const createProgression = (firstElem, incr) => {
   return progression;
 };
 
-const createProgrWithHiddenElem = (progression, hiddenIndex) => {
-  let progrWithHiddenElem = '';
+const createQuestion = (progression, hiddenIndex) => {
+  let question = '';
   progression.forEach((el, i) => {
     const elem = i === hiddenIndex ? '..' : el;
-    progrWithHiddenElem += ` ${elem}`;
+    question = `${question} ${elem}`;
   });
-  return progrWithHiddenElem;
+  return question;
 };
 
 const generateTask = () => {
@@ -27,8 +27,9 @@ const generateTask = () => {
   const incr = getRandomNumber(1, 50);
   const progression = createProgression(firstElem, incr);
   const randomProgElemIndex = getRandomNumber(0, progressionSize - 1);
-  const progrWithHiddenElem = createProgrWithHiddenElem(progression, randomProgElemIndex);
-  const task = pairs.cons(`${progrWithHiddenElem}`, progression[randomProgElemIndex].toString());
+  const progrWithHiddenElem = createQuestion(progression, randomProgElemIndex);
+  const rightAnswer = progression[randomProgElemIndex];
+  const task = pairs.cons(`${progrWithHiddenElem}`, rightAnswer.toString());
   return task;
 };
 

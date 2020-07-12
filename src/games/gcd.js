@@ -15,7 +15,8 @@ const getCommonDiv = (a, b) => {
 const generateTask = () => {
   const randomA = getRandomNumber(1, 100);
   const randomB = getRandomNumber(1, 100);
-  const task = pairs.cons(`${randomA} ${randomB}`, getCommonDiv(randomA, randomB).toString());
+  const rightAnswer = getCommonDiv(randomA, randomB);
+  const task = pairs.cons(`${randomA} ${randomB}`, rightAnswer.toString());
   return task;
 };
 

@@ -3,7 +3,7 @@ import getRandomNumber from '../random.js';
 import play from '../flow.js';
 
 const isNumberPrime = (num) => {
-  if (num === 0) {
+  if (num <= 1) {
     return false;
   }
   for (let div = 2; div < Math.sqrt(num); div += 1) {
@@ -20,8 +20,9 @@ const getRightAnswer = (num) => {
 };
 
 const generateTask = () => {
-  const questionNumber = getRandomNumber(1, 100);
-  const task = pairs.cons(questionNumber.toString(), getRightAnswer(questionNumber));
+  const question = getRandomNumber(1, 100);
+  const rightAnswer = getRightAnswer(question);
+  const task = pairs.cons(question.toString(), rightAnswer);
   return task;
 };
 
