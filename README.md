@@ -21,21 +21,21 @@ $ make even
 $ make calc
 [![asciicast](https://asciinema.org/a/TJeaGG7lCrVjTaz7n4PxDto2l.svg)](https://asciinema.org/a/TJeaGG7lCrVjTaz7n4PxDto2l)
 
-# Игра "Наименьший общий делитель"
+### Игра "Наименьший общий делитель"
 #### Описание
 Найти наибольший общий делитель двух чисел
 #### Запуск
 $ make gcd
 [![asciicast](https://asciinema.org/a/PadWzbGB7gE6ZPn0DkYZrnT7w.svg)](https://asciinema.org/a/PadWzbGB7gE6ZPn0DkYZrnT7w)
 
-# Игра "Арифметическая прогрессия"
+### Игра "Арифметическая прогрессия"
 #### Описание
 Восстановить пропущенный член арифметической прогрессии
 #### Запуск
 $ make prog
 [![asciicast](https://asciinema.org/a/oAwHQolwxV2ICOczsB8TPAZM9.svg)](https://asciinema.org/a/oAwHQolwxV2ICOczsB8TPAZM9)
 
-# Игра "Простое ли число?"
+### Игра "Простое ли число?"
 #### Описание
 Проверить, является ли случайное число простым
 #### Запуск
