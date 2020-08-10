@@ -2,7 +2,7 @@ import pairs from '@hexlet/pairs';
 import getRandomNumber from '../random.js';
 import play from '../flow.js';
 
-const operationSigns = ['+', '-', '*'];
+const signs = ['+', '-', '*'];
 
 const calculateExpression = (num1, num2, sign) => {
   switch (sign) {
@@ -18,16 +18,17 @@ const calculateExpression = (num1, num2, sign) => {
 };
 
 export const getRandomOperationSign = () => {
-  const randomNum = getRandomNumber(0, operationSigns.length - 1);
-  return operationSigns[randomNum];
+  const randomNum = getRandomNumber(0, signs.length - 1);
+  return signs[randomNum];
 };
 
 const generateTask = () => {
   const a = getRandomNumber(1, 100);
   const b = getRandomNumber(1, 100);
   const operationSign = getRandomOperationSign();
+  const question = `${a} ${operationSign} ${b}`;
   const rightAnswer = calculateExpression(a, b, operationSign);
-  const task = pairs.cons(`${a} ${operationSign} ${b}`, rightAnswer.toString());
+  const task = pairs.cons(question, rightAnswer.toString());
   return task;
 };
 

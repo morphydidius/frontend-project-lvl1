@@ -14,14 +14,9 @@ const isNumberPrime = (num) => {
   return true;
 };
 
-const getRightAnswer = (num) => {
-  const answer = isNumberPrime(num) ? 'yes' : 'no';
-  return answer;
-};
-
 const generateTask = () => {
   const question = getRandomNumber(1, 100);
-  const rightAnswer = getRightAnswer(question);
+  const rightAnswer = isNumberPrime(question) ? 'yes' : 'no';
   const task = pairs.cons(question.toString(), rightAnswer);
   return task;
 };

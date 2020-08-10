@@ -4,14 +4,9 @@ import play from '../flow.js';
 
 const isEven = (n) => n % 2 === 0;
 
-const getRightAnswer = (n) => {
-  const answer = isEven(n) ? 'yes' : 'no';
-  return answer;
-};
-
 const generateTask = () => {
   const question = getRandomNumber(1, 100);
-  const rightAnswer = getRightAnswer(question);
+  const rightAnswer = isEven(question) ? 'yes' : 'no';
   const task = pairs.cons(question.toString(), rightAnswer);
   return task;
 };
