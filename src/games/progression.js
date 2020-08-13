@@ -16,8 +16,11 @@ const createProgression = (firstElem, increment) => {
 const createQuestion = (progression, hiddenIndex) => {
   let question = '';
   progression.forEach((el, i) => {
-    const elem = i === hiddenIndex ? '..' : el;
-    question = `${question}${elem} `;
+    let elem = i === hiddenIndex ? '..' : el;
+    if (i + 1 < progression.length) {
+      elem = `${elem} `;
+    }
+    question = `${question}${elem}`;
   });
   return question;
 };
@@ -33,8 +36,8 @@ const generateTask = () => {
   return task;
 };
 
-const instruct = 'What number is missing in the progression?';
+const instruction = 'What number is missing in the progression?';
 
 export default () => {
-  play(instruct, generateTask);
+  play(instruction, generateTask);
 };

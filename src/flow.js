@@ -27,21 +27,23 @@ export default (instruct, getGameData) => {
     return false;
   };
 
-  // Задаем функцию полной игры
-  const playGame = (counter = 0) => {
-    const task = getGameData();
-    const roundResult = playRound(task);
-    if (!roundResult) {
-      console.log(`Let's try again, ${userName}!`);
-      return roundResult;
-    }
-    if (counter + 1 < roundsCount) {
-      return playGame(counter + 1);
-    }
-    console.log(`Congratulations, ${userName}!`);
-    return roundResult;
-  };
+  let counter = 0;
+  let gameResult = false;
 
-  // Запускаем игру
-  playGame();
+  // Проигрываем раунды
+  do {
+    const task = getGameData();
+    gameResult = playRound(task);
+    if (!gameResult) {
+      break;
+    }
+    counter += 1;
+  } while (counter < roundsCount);
+
+  // Показываем фидбэк
+  if (gameResult) {
+    console.log(`Congratulations, ${userName}!`);
+  } else {
+    console.log(`Let's try again, ${userName}!`);
+  }
 };

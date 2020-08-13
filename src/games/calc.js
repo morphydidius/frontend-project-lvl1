@@ -32,8 +32,8 @@ const generateTask = () => {
   return task;
 };
 
-const instruct = 'What is the result of the expression?';
+const instruction = 'What is the result of the expression?';
 
 export default () => {
-  play(instruct, generateTask);
+  play(instruction, generateTask);
 };

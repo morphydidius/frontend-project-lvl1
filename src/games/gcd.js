@@ -21,8 +21,8 @@ const generateTask = () => {
   return task;
 };
 
-const instruct = 'Find the greatest common divisor of given numbers.';
+const instruction = 'Find the greatest common divisor of given numbers.';
 
 export default () => {
-  play(instruct, generateTask);
+  play(instruction, generateTask);
 };

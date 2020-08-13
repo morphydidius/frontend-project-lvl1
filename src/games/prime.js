@@ -21,8 +21,8 @@ const generateTask = () => {
   return task;
 };
 
-const instruct = 'Answer "yes" if the number is prime, otherwise answer "no".';
+const instruction = 'Answer "yes" if the number is prime, otherwise answer "no".';
 
 export default () => {
-  play(instruct, generateTask);
+  play(instruction, generateTask);
 };
